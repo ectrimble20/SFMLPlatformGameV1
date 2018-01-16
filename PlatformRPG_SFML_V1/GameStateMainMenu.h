@@ -17,5 +17,6 @@ private:
 	sf::Text m_menu_text;
 	sf::Sprite m_menu_background;
 	Gui g;
+	void centerMenu();
 };
 

@@ -1,5 +1,6 @@
 #include "Gui.h"
 #include "ResourceHolder.h"
+#include <iostream> //ugh debug again
 
 
 Gui::Gui()
@@ -28,7 +29,17 @@ Gui::Gui()
 			std::make_pair("Road",          "road")
 		})
 	);
-	guiSystem.at("rightClickMenu").show();//I might just be retarded, yep, I'm retarded
+	guiSystem.emplace("mainMenu", GuiContainer(sf::Vector2f(384, 48), 8, false, buttonStyle,
+		{
+			std::make_pair("Start New Game", "new_game"),
+			std::make_pair("Load Game", "load_game"),
+			std::make_pair("Options", "options"),
+			std::make_pair("Credits", "credits"),
+			std::make_pair("Exit Game", "exit")
+		}));
+	guiSystem.at("mainMenu").show();
+	guiSystem.at("mainMenu").centerEntityText();
+	//guiSystem.at("rightClickMenu").show();//I might just be retarded, yep, I'm retarded
 
 }
 
@@ -43,5 +54,83 @@ void Gui::draw(sf::RenderWindow& window)
 	{
 		window.draw(e.second);
 	}
+}
+
+void Gui::setContainerPosition(std::string containerName, sf::Vector2f position)
+{
+	//sanity check
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		guiSystem.at(containerName).setPosition(position);
+	}
+}
+
+void Gui::setContainerTextCenter(std::string containerName)
+{
+	//sanity check
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		guiSystem.at(containerName).centerEntityText();
+	}
+}
+
+sf::Vector2f Gui::getContainerSize(std::string containerName)
+{
+	//sanity check
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		return guiSystem.at(containerName).getDimensions();
+	}
+	else
+	{
+		return sf::Vector2f(0.0f, 0.0f);
+	}
+}
+
+void Gui::setContainerShow(std::string containerName)
+{
+	//sanity check
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		guiSystem.at(containerName).show();
+	}
+}
+
+void Gui::setContainerHide(std::string containerName)
+{
+	//sanity check
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		guiSystem.at(containerName).hide();
+	}
+}
+
+void Gui::toggleContainerShown(std::string containerName)
+{
+	//sanity check
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		if (guiSystem.at(containerName).isVisible()) {
+			guiSystem.at(containerName).hide();
+		}
+		else
+		{
+			guiSystem.at(containerName).show();
+		}
+	}
+}
+
+void Gui::checkForHover(std::string containerName, sf::Vector2i mousePosition)
+{
+	//sanity check
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		guiSystem.at(containerName).highlight(guiSystem.at(containerName).getEntity(mousePosition));		
+	}
+}
+
+std::string Gui::getClickAction(std::string containerName, sf::Vector2i mouseClickPosition)
+{
+	return std::string();
 }
 

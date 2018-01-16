@@ -21,7 +21,11 @@ public:
 	void show();
 	void hide();
 	void highlight(const int entity);
-
+	virtual void setPosition(sf::Vector2f position);
+	void centerEntityText();
+	bool isVisible() const { return m_isVisible; };
+	int getEntity(sf::Vector2i mousePosition);
+	std::string getAction(const int entity);
 private:
 	GUIStyle m_style;
 	sf::Vector2f m_dimensions;
