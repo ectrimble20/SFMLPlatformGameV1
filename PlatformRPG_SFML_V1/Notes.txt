@@ -1,0 +1,49 @@
+Platform RPG
+
+What I'd like to create is a RPG game similar to how Terraria works.  E.g you're in a randomly generated world, and you move on a 2D platform.
+
+The biggest differences is that I don't want "magic" or any real fantasy elements.  I'd like it to be human vs human style'd world with animals etc.
+
+The buildings and what not should be medeval focused but the game play isn't aimed at being "realistic", it still needs to be fun.
+
+I'd like to use a pixel art style, something like 32x32 being the basic tile size and objects being various scales of 32x32 so hit boxes are easy to calculate.
+
+All materials and items need to be "useful" meaning if it's a junk item, it should at least be broken down into useful materials.
+
+Crafting should be multi-tiered, meaning complex items require simple items, simple items, require base materials, base materials require raw.
+
+There should be an emphasis on balancing crafting and crafting should play an important part of the game as items should wear out with use so there's a need to be gathering and crafting.
+
+One thing I've noticed watching Terraria game play is that you craft things once and never need them again, there's no maintenance.
+
+There also needs to be a good balance between items crafted and "epic loots".  Bosses and harder NPC's should drop powerful, but expensive to maintain items, so they should be used when needed, not just cuz.
+
+I'd like a rewarding game where a player must balance crafting, gathering, etc with fighting NPC's for loot.  There should be an element to the "cave crawl" to make exploration interesting.
+
+Unlike how Terraria does it's single huge world, I'd like to do a "small joined world" style of layout.
+
+Baiscally, I'd like each world to be "N x N" in size, something like 256 x 256 32px tiles is a "world", each world can be joined with a portal.  Portals are spawned randomly  towards the edges of the world.
+
+Each portal connects to a joined up world allowing travel between the two.  Once a world has been visited, there should be an item or alter craftable to allow a player to travel between two unjoined worlds.
+
+This would be the only really "magical" element to the game, but it'd be there to enable easy travel between worlds.
+
+
+Okay, so actually working on this.  Need to keep tabs on my ideas.
+
+So the world is divided into parts.  We'll have it's higherarchy going like this:
+
+World -> Region -> Province -> Tile
+
+Tile being the smallest unit of terrain in the game, world being the entire wrapper for all the others.
+
+Province is the smallest "place", meaning it's the place the player directly interacts with.
+
+Region contains 1-N number of Provinces.  Provinces connect to each other linearly, so each one connects to the next via the east/west.
+
+Each province will have it's own biome for the surface.  Underground terrain will be similar wherever you are, but the biomes can cause different levels of minerals to spawn.
+
+Elevation is also related to the biome.
+
+For space saving purposes, each Province will be a set size.  I'm thinking 256 wide, by 128 high.  That gives 32,768 32x32 locations, which is around 1.04m unique X/Y locations.
+the provience starting at 0,0 and ending at 8192,4096 (I think it'll actually be 8191,4095 due to the -1 from a zero alignment).

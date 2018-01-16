@@ -2,27 +2,14 @@
 
 
 
-Province::Province(unsigned int width, unsigned int height)
+Province::Province(unsigned int size)
 {
-	tileMap = new Tile[width * height];
+	m_size = size;
+	m_chunks = new Chunk[size];
 }
 
 
 Province::~Province()
 {
-}
-
-Tile Province::GetTile(unsigned int x, unsigned int y)
-{
-	return Tile();
-}
-
-Tile * Province::GetNeighboringTiles(unsigned int x, unsigned int y)
-{
-	return nullptr;
-}
-
-Tile * Province::GetTilesUnderneith(unsigned int x, unsigned int y)
-{
-	return nullptr;
+	delete[] m_chunks;
 }
