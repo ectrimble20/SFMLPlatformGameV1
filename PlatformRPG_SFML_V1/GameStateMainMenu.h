@@ -18,5 +18,8 @@ private:
 	sf::Sprite m_menu_background;
 	Gui g;
 	void centerMenu();
+	//stupid menu dragging vars
+	sf::Vector2f lastDragPosition;
+	bool isDragging = false;
 };
 

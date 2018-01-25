@@ -148,6 +148,16 @@ void GuiContainer::setPosition(sf::Vector2f position)
 	}
 }
 
+void GuiContainer::move(sf::Vector2f& offset)
+{
+	sf::Transformable::move(offset);
+	for (auto & entity : entities)
+	{
+		entity.shape.move(offset);
+		entity.textObject.move(offset);
+	}
+}
+
 void GuiContainer::centerEntityText()
 {
 	for (auto & entity : entities)

@@ -74,6 +74,23 @@ void GameStateMainMenu::update(const float deltaTime)
 		case sf::Event::MouseMoved:
 			g.checkForHover("mainMenu", sf::Mouse::getPosition(game->window));
 			break;
+		case sf::Event::MouseButtonPressed:
+			if (e.mouseButton.button == sf::Mouse::Button::Left)
+			{
+				if (!isDragging) {
+					isDragging = true;
+					//set the position on from where the drag was initiated
+					lastDragPosition = sf::Vector2f(sf::Mouse::getPosition(game->window));
+				}
+			}
+			break;
+		case sf::Event::MouseButtonReleased:
+			if (e.mouseButton.button == sf::Mouse::Button::Left)
+			{
+				if (isDragging) {
+					isDragging = false;
+				}
+			}
 		default:
 			break;
 		}
@@ -82,6 +99,13 @@ void GameStateMainMenu::update(const float deltaTime)
 
 void GameStateMainMenu::handleInput()
 {
+	if (isDragging)
+	{
+		sf::Vector2f curMousePos = sf::Vector2f(sf::Mouse::getPosition(game->window));
+		sf::Vector2f offset = curMousePos - lastDragPosition;
+		lastDragPosition = curMousePos;
+		g.moveContainer("mainMenu", offset);
+	}
 }
 
 void GameStateMainMenu::centerMenu()

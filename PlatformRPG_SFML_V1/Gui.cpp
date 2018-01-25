@@ -65,6 +65,14 @@ void Gui::setContainerPosition(std::string containerName, sf::Vector2f position)
 	}
 }
 
+void Gui::moveContainer(std::string containerName, sf::Vector2f offset)
+{
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		guiSystem.at(containerName).move(offset);
+	}
+}
+
 void Gui::setContainerTextCenter(std::string containerName)
 {
 	//sanity check
