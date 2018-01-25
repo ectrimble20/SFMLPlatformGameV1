@@ -77,7 +77,7 @@ void GameStateMainMenu::update(const float deltaTime)
 		case sf::Event::MouseButtonPressed:
 			if (e.mouseButton.button == sf::Mouse::Button::Left)
 			{
-				if (!isDragging) {
+				if (!isDragging && g.isMouseOver("mainMenu", sf::Mouse::getPosition(game->window)) ) {
 					isDragging = true;
 					//set the position on from where the drag was initiated
 					lastDragPosition = sf::Vector2f(sf::Mouse::getPosition(game->window));

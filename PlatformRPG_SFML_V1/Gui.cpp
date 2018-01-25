@@ -137,6 +137,20 @@ void Gui::checkForHover(std::string containerName, sf::Vector2i mousePosition)
 	}
 }
 
+bool Gui::isMouseOver(std::string containerName, sf::Vector2i mousePosition)
+{
+	//sanity check
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		//note: make sure it's >= 0, -1 is the "not found" indicator
+		if (guiSystem.at(containerName).getEntity(mousePosition) >= 0)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 std::string Gui::getClickAction(std::string containerName, sf::Vector2i mouseClickPosition)
 {
 	return std::string();
