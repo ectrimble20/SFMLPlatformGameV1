@@ -42,6 +42,8 @@ Province is the smallest "place", meaning it's the place the player directly int
 Region contains 1-N number of Provinces.  Provinces connect to each other linearly, so each one connects to the next via the east/west.
 
 Each province will have it's own biome for the surface.  Underground terrain will be similar wherever you are, but the biomes can cause different levels of minerals to spawn.
+Provinces will have their biome diversity controlled by the Region.  For instance a Region might be primarily mountains, so many of the provinces will have a majoirty
+of mountainous terrain.
 
 Elevation is also related to the biome.
 

@@ -101,6 +101,22 @@ void GameStateMainMenu::update(const float deltaTime)
 					//set the position on from where the drag was initiated
 					lastDragPosition = sf::Vector2f(sf::Mouse::getPosition(game->window));
 				}
+				//lets see if we can make a button do something
+				//okay this isn't working because of the above code that do the thing above, we need to move this
+				//into the release code
+				/*
+				if (!isDragging) {
+					std::string action = g.getClickAction("mainMenu", sf::Mouse::getPosition(game->window));
+					std::cout << "Click action: " << action << std::endl;
+					if (action != "null")
+					{
+						if (action == "exit")
+						{
+							game->window.close();
+						}
+					}
+				}
+				*/
 			}
 			if (e.mouseButton.button == sf::Mouse::Button::Right)
 			{
@@ -113,6 +129,16 @@ void GameStateMainMenu::update(const float deltaTime)
 			{
 				if (isDragging) {
 					isDragging = false;
+				}
+				//check for release over an active button
+				std::string action = g.getClickAction("mainMenu", sf::Mouse::getPosition(game->window));
+				std::cout << "Click action: " << action << std::endl;
+				if (action != "null")
+				{
+					if (action == "exit")
+					{
+						game->window.close();
+					}
 				}
 			}
 		default:

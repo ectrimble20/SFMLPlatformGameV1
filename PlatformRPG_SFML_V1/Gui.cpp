@@ -178,6 +178,11 @@ bool Gui::isContainerVisible(std::string containerName)
 
 std::string Gui::getClickAction(std::string containerName, sf::Vector2i mouseClickPosition)
 {
-	return std::string();
+	//sanity check
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		return guiSystem.at(containerName).getAction(guiSystem.at(containerName).getEntity(mouseClickPosition));
+	}
+	return "null";
 }
 
