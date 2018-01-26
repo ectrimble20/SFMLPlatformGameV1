@@ -5,21 +5,7 @@
 
 Gui::Gui()
 {
-	GuiStyle buttonStyle;
-	buttonStyle.fontKey = "lucon";
-	buttonStyle.borderSize = 1.0f;
-	buttonStyle.bodyColor = sf::Color(0xc6, 0xc6, 0xc6);
-	buttonStyle.borderColor = sf::Color(0x94, 0x94, 0x94);
-	buttonStyle.textColor = sf::Color(0x00, 0x00, 0x00);
-	buttonStyle.bodyHighlightColor = sf::Color(0x61, 0x61, 0x61);
-	buttonStyle.borderHighlightColor = sf::Color(0x94, 0x94, 0x94);
-	buttonStyle.textHighlightColor = sf::Color(0x00, 0x00, 0x00);
-
-	//GuiStyle(sf::Font* font, float borderSize,
-	//sf::Color bodyCol, sf::Color borderCol, sf::Color textCol,
-		//sf::Color bodyHighlightCol, sf::Color borderHighlightCol, sf::Color textHighlightCol)
-
-	guiSystem.emplace("rightClickMenu", GuiContainer(sf::Vector2f(128, 16), 2, false, buttonStyle,
+	guiSystem.emplace("rightClickMenu", GuiContainer(sf::Vector2f(128, 16), 2, false, "menuButton",
 		{
 			std::make_pair("Right Click 1",         "grass"),
 			std::make_pair("Right Click 2",        "forest"),
@@ -29,7 +15,7 @@ Gui::Gui()
 			std::make_pair("Right Click 6",          "road")
 		})
 	);
-	guiSystem.emplace("mainMenu", GuiContainer(sf::Vector2f(384, 48), 8, false, buttonStyle,
+	guiSystem.emplace("mainMenu", GuiContainer(sf::Vector2f(384, 48), 8, false, "menuButton",
 		{
 			std::make_pair("Start New Game", "new_game"),
 			std::make_pair("Load Game", "load_game"),

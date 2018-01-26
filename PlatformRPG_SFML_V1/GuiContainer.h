@@ -2,6 +2,7 @@
 #include "GuiStruct.h"
 #include "SFML\Graphics.hpp"
 #include <vector>
+#include "GuiStyleLib.h"
 
 //this is going to replace the Gui class, the Gui class will be the actual interaction class
 //this will be the data class
@@ -14,7 +15,7 @@ class GuiContainer : public sf::Transformable, public sf::Drawable
 {
 public:
 	GuiContainer() = delete; //no default constructor
-	GuiContainer(sf::Vector2f dimensions, int padding, bool horizontal, GuiStyle style, std::vector<std::pair<std::string, std::string>> entries);
+	GuiContainer(sf::Vector2f dimensions, int padding, bool horizontal, std::string style, std::vector<std::pair<std::string, std::string>> entries);
 	~GuiContainer();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	//accessors

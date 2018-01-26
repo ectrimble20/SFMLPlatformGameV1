@@ -3,24 +3,24 @@
 #include <iostream>
 
 
-GuiContainer::GuiContainer(sf::Vector2f dimensions, int padding, bool horizontal, GuiStyle style, std::vector<std::pair<std::string, std::string>> entries)
+GuiContainer::GuiContainer(sf::Vector2f dimensions, int padding, bool horizontal, std::string style, std::vector<std::pair<std::string, std::string>> entries)
 {
-	m_style = style;
+	m_style = GuiStyleLib::Instance()->GetStyle(style);;
 	m_dimensions = dimensions;
 	m_padding = padding;
 	m_isHorizontal = horizontal;
 	sf::RectangleShape shape;
 	shape.setSize(m_dimensions);
-	shape.setFillColor(style.bodyColor);
-	shape.setOutlineThickness(-style.borderSize);
-	shape.setOutlineColor(style.borderColor);
+	shape.setFillColor(m_style.bodyColor);
+	shape.setOutlineThickness(-m_style.borderSize);
+	shape.setOutlineColor(m_style.borderColor);
 	for (auto entry : entries)
 	{
 		sf::Text text;
 		text.setString(entry.first);
-		text.setFont(ResourceHolder::getFont(style.fontKey));
-		text.setFillColor(style.textColor);
-		text.setCharacterSize(m_dimensions.y - style.borderSize - m_padding);
+		text.setFont(ResourceHolder::getFont(m_style.fontKey));
+		text.setFillColor(m_style.textColor);
+		text.setCharacterSize(m_dimensions.y - m_style.borderSize - m_padding);
 		GuiEntity e;
 		e.shape = shape;
 		e.text = entry.second;
