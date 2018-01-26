@@ -5,6 +5,10 @@
 
 //this is going to replace the Gui class, the Gui class will be the actual interaction class
 //this will be the data class
+enum class GuiTextAlignment {
+	LEFT, RIGHT, CENTER
+};
+
 
 class GuiContainer : public sf::Transformable, public sf::Drawable
 {
@@ -24,6 +28,7 @@ public:
 	virtual void setPosition(sf::Vector2f position);
 	void move(sf::Vector2f& adjustment);
 	void centerEntityText();
+	void setEntityTextAlignment(GuiTextAlignment alignment, unsigned int padding);
 	bool isVisible() const { return m_isVisible; };
 	int getEntity(sf::Vector2i mousePosition);
 	std::string getAction(const int entity);

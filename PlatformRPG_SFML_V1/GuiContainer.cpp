@@ -160,6 +160,7 @@ void GuiContainer::move(sf::Vector2f& offset)
 
 void GuiContainer::centerEntityText()
 {
+	sf::Vector2f offset(0.0f, 0.0f);
 	for (auto & entity : entities)
 	{
 		//get the shapes width
@@ -171,6 +172,76 @@ void GuiContainer::centerEntityText()
 		std::cout << "ShapeSize: " << shapeSize << ", textSize: " << textSize << ", X: " << x << std::endl;
 		sf::Vector2f s(x, 0.0f);
 		entity.textObject.move(s);
+	}
+}
+
+/*
+Text Alignment notes.
+
+Okay, this is so I can remember what I need to calculate when aligning text bounds within their container bounds.
+
+Left Align:
+Simple, we only need to calculate for padding and adjust the X axis off of that
+TxtX + padding
+
+Center Align:
+A little more complex but not terrible, we just need to take width of Text minus width of container, divide by two and adjust X axis to that:
+(TxtW - ConW) / 2 = X
+Note: If we're padded, it really shouldn't matter for Centered text
+
+Right Align:
+The most complex align in implementation, but still not really hard to figure out.
+We just need to take the width of the text, subtract the width of the container, and subtract padding and adjust X axis to that.
+(TxtW - ConW) - padding = X
+
+*/
+void GuiContainer::setEntityTextAlignment(GuiTextAlignment alignment, unsigned int padding)
+{
+	sf::Vector2f offset(0.0f, 0.0f);
+	float shapeSize;
+	float textSize;
+	float moveOffset;
+
+	for (auto & entity : entities)
+	{
+		//make sure we're aligned up with our parent container
+		sf::Vector2f origin = getOrigin();
+		origin -= offset;
+		entity.shape.setOrigin(origin);
+		entity.textObject.setOrigin(origin);
+		//make sure our position is reset to the relation of the parent container as well
+		entity.shape.setPosition(getPosition());
+		entity.textObject.setPosition(getPosition());
+		//if you don't do this, it moves the text around instead of absolute positioning
+		switch (alignment)
+		{
+		case GuiTextAlignment::LEFT:
+			//for our left align, we just need to adjust the X position of the text by the padding
+			entity.textObject.move(sf::Vector2f((float)padding, 0.0f));
+			break;
+		case GuiTextAlignment::RIGHT:
+			shapeSize = entity.shape.getSize().x;
+			textSize = entity.textObject.getGlobalBounds().width;
+			moveOffset = (shapeSize - textSize) - (float)padding;
+			entity.textObject.move(sf::Vector2f(moveOffset, 0.0f));
+			break;
+		case GuiTextAlignment::CENTER:
+			shapeSize = entity.shape.getSize().x;
+			textSize = entity.textObject.getGlobalBounds().width;
+			moveOffset = (shapeSize - textSize) * 0.5f;
+			entity.textObject.move(sf::Vector2f(moveOffset, 0.0f));
+			break;
+		default:
+			//do nothing if we somehow got an option that doesn't exist
+			break;
+		}
+		//adjust our offset
+		if (m_isHorizontal) {
+			offset.x += m_dimensions.x;
+		}
+		else {
+			offset.y += m_dimensions.y;
+		}
 	}
 }
 

@@ -59,8 +59,15 @@ void GameStateMainMenu::update(const float deltaTime)
 			}
 			if (e.key.code == sf::Keyboard::C)
 			{
-				//see if I can get this fucker to work
 				g.setContainerTextCenter("mainMenu");
+			}
+			if (e.key.code == sf::Keyboard::L)
+			{
+				g.setContainerTextLeft("mainMenu");
+			}
+			if (e.key.code == sf::Keyboard::R)
+			{
+				g.setContainerTextRight("mainMenu");
 			}
 			if (e.key.code == sf::Keyboard::M)
 			{

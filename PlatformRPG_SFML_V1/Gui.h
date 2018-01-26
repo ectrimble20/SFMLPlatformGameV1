@@ -20,6 +20,8 @@ public:
 	void setContainerPosition(std::string containerName, sf::Vector2f position);
 	void moveContainer(std::string containerName, sf::Vector2f offset);
 	void setContainerTextCenter(std::string containerName);
+	void setContainerTextRight(std::string containerName);
+	void setContainerTextLeft(std::string containerName);
 	sf::Vector2f getContainerSize(std::string containerName);
 	void setContainerShow(std::string containerName);
 	void setContainerHide(std::string containerName);
