@@ -28,7 +28,7 @@ public:
 	virtual void setPosition(sf::Vector2f position);
 	void move(sf::Vector2f& adjustment);
 	void centerEntityText();
-	void setEntityTextAlignment(GuiTextAlignment alignment, unsigned int padding);
+	void setEntityTextAlignment(GuiTextAlignment alignment);
 	bool isVisible() const { return m_isVisible; };
 	int getEntity(sf::Vector2i mousePosition);
 	std::string getAction(const int entity);

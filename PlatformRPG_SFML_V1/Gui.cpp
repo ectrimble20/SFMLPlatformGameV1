@@ -78,7 +78,7 @@ void Gui::setContainerTextCenter(std::string containerName)
 	//sanity check
 	if (guiSystem.find(containerName) != guiSystem.end())
 	{
-		guiSystem.at(containerName).setEntityTextAlignment(GuiTextAlignment::CENTER, 0);
+		guiSystem.at(containerName).setEntityTextAlignment(GuiTextAlignment::CENTER);
 	}
 }
 
@@ -87,7 +87,7 @@ void Gui::setContainerTextRight(std::string containerName)
 	//sanity check
 	if (guiSystem.find(containerName) != guiSystem.end())
 	{
-		guiSystem.at(containerName).setEntityTextAlignment(GuiTextAlignment::RIGHT, 5);
+		guiSystem.at(containerName).setEntityTextAlignment(GuiTextAlignment::RIGHT);
 	}
 }
 
@@ -96,7 +96,7 @@ void Gui::setContainerTextLeft(std::string containerName)
 	//sanity check
 	if (guiSystem.find(containerName) != guiSystem.end())
 	{
-		guiSystem.at(containerName).setEntityTextAlignment(GuiTextAlignment::LEFT, 5);
+		guiSystem.at(containerName).setEntityTextAlignment(GuiTextAlignment::LEFT);
 	}
 }
 

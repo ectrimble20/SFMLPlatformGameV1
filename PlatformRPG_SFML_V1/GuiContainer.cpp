@@ -195,7 +195,7 @@ We just need to take the width of the text, subtract the width of the container,
 (TxtW - ConW) - padding = X
 
 */
-void GuiContainer::setEntityTextAlignment(GuiTextAlignment alignment, unsigned int padding)
+void GuiContainer::setEntityTextAlignment(GuiTextAlignment alignment)
 {
 	sf::Vector2f offset(0.0f, 0.0f);
 	float shapeSize;
@@ -217,12 +217,12 @@ void GuiContainer::setEntityTextAlignment(GuiTextAlignment alignment, unsigned i
 		{
 		case GuiTextAlignment::LEFT:
 			//for our left align, we just need to adjust the X position of the text by the padding
-			entity.textObject.move(sf::Vector2f((float)padding, 0.0f));
+			entity.textObject.move(sf::Vector2f((float)m_padding, 0.0f));
 			break;
 		case GuiTextAlignment::RIGHT:
 			shapeSize = entity.shape.getSize().x;
 			textSize = entity.textObject.getGlobalBounds().width;
-			moveOffset = (shapeSize - textSize) - (float)padding;
+			moveOffset = (shapeSize - textSize) - (float)m_padding;
 			entity.textObject.move(sf::Vector2f(moveOffset, 0.0f));
 			break;
 		case GuiTextAlignment::CENTER:
