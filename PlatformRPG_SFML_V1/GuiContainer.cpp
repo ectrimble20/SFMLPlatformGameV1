@@ -158,23 +158,6 @@ void GuiContainer::move(sf::Vector2f& offset)
 	}
 }
 
-void GuiContainer::centerEntityText()
-{
-	sf::Vector2f offset(0.0f, 0.0f);
-	for (auto & entity : entities)
-	{
-		//get the shapes width
-		float shapeSize = entity.shape.getSize().x;
-		float textSize = entity.textObject.getGlobalBounds().width;
-		//all this really needs to do is adjust the X axis of the position by half the difference
-		//of the product of subtracting the shapes X from the textPos's X
-		float x = (shapeSize - textSize) * 0.5f;
-		std::cout << "ShapeSize: " << shapeSize << ", textSize: " << textSize << ", X: " << x << std::endl;
-		sf::Vector2f s(x, 0.0f);
-		entity.textObject.move(s);
-	}
-}
-
 /*
 Text Alignment notes.
 
