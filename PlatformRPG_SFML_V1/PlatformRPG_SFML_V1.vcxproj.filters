@@ -63,6 +63,9 @@
     <ClCompile Include="GuiContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GuiStyleLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Province.h">
@@ -116,5 +119,11 @@
     <ClInclude Include="GuiContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GuiStyleLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Todos.txt" />
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-GuiContainer::GuiContainer(sf::Vector2f dimensions, int padding, bool horizontal, GUIStyle style, std::vector<std::pair<std::string, std::string>> entries)
+GuiContainer::GuiContainer(sf::Vector2f dimensions, int padding, bool horizontal, GuiStyle style, std::vector<std::pair<std::string, std::string>> entries)
 {
 	m_style = style;
 	m_dimensions = dimensions;

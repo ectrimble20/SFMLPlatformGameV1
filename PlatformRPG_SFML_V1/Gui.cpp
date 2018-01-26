@@ -5,7 +5,7 @@
 
 Gui::Gui()
 {
-	GUIStyle buttonStyle;
+	GuiStyle buttonStyle;
 	buttonStyle.fontKey = "lucon";
 	buttonStyle.borderSize = 1.0f;
 	buttonStyle.bodyColor = sf::Color(0xc6, 0xc6, 0xc6);

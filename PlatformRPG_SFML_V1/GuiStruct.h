@@ -5,7 +5,7 @@
 
 //Data structures related to the GUI
 
-struct GUIStyle
+struct GuiStyle
 {
 	sf::Color bodyColor;
 	sf::Color bodyHighlightColor;

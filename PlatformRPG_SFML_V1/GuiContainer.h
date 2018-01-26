@@ -14,7 +14,7 @@ class GuiContainer : public sf::Transformable, public sf::Drawable
 {
 public:
 	GuiContainer() = delete; //no default constructor
-	GuiContainer(sf::Vector2f dimensions, int padding, bool horizontal, GUIStyle style, std::vector<std::pair<std::string, std::string>> entries);
+	GuiContainer(sf::Vector2f dimensions, int padding, bool horizontal, GuiStyle style, std::vector<std::pair<std::string, std::string>> entries);
 	~GuiContainer();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	//accessors
@@ -32,7 +32,7 @@ public:
 	int getEntity(sf::Vector2i mousePosition);
 	std::string getAction(const int entity);
 private:
-	GUIStyle m_style;
+	GuiStyle m_style;
 	sf::Vector2f m_dimensions;
 	bool m_isHorizontal = false; //defaults to a vertical display (stacked)
 	bool m_isVisible = false; //hidden by default

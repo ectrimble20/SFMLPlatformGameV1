@@ -1,0 +1,11 @@
+Sort out GuiContainer/Gui, this isn't a good name for these as they are hoizontal/vertical stacked menu items.
+
+Need a dialog like pop-up Gui item, something that can be popped up with information and have a close button.
+
+Figure out some kind of Widget system where we can have something like a corner close/resize/move selection buttons.
+
+[DONE] Fix GUIStyle to be GuiStyle for consistency
+
+[DONE] Add static accessor for GuiStyles
+
+Fix GuiContainer (or w/e we change it's name to) to use the Static GuiStyleLib
