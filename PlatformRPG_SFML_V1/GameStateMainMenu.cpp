@@ -79,7 +79,19 @@ void GameStateMainMenu::update(const float deltaTime)
 			}
 			break;
 		case sf::Event::MouseMoved:
-			g.checkForHover("mainMenu", sf::Mouse::getPosition(game->window));
+			//ignore main menu if right-click menu is visible
+			if (! g.isContainerVisible("rightClickMenu")) {
+				g.checkForHover("mainMenu", sf::Mouse::getPosition(game->window));
+			}
+			else
+			{
+				if (g.isMouseOver("rightClickMenu", sf::Mouse::getPosition(game->window))) {
+					g.checkForHover("rightClickMenu", sf::Mouse::getPosition(game->window));
+				}
+				else {
+					g.toggleContainerShown("rightClickMenu");
+				}
+			}
 			break;
 		case sf::Event::MouseButtonPressed:
 			if (e.mouseButton.button == sf::Mouse::Button::Left)
@@ -89,6 +101,11 @@ void GameStateMainMenu::update(const float deltaTime)
 					//set the position on from where the drag was initiated
 					lastDragPosition = sf::Vector2f(sf::Mouse::getPosition(game->window));
 				}
+			}
+			if (e.mouseButton.button == sf::Mouse::Button::Right)
+			{
+				g.setContainerPosition("rightClickMenu", sf::Vector2f(sf::Mouse::getPosition(game->window)));
+				g.toggleContainerShown("rightClickMenu");
 			}
 			break;
 		case sf::Event::MouseButtonReleased:

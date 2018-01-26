@@ -28,6 +28,7 @@ public:
 	void toggleContainerShown(std::string containerName);
 	void checkForHover(std::string containerName, sf::Vector2i mousePosition);
 	bool isMouseOver(std::string containerName, sf::Vector2i mousePosition);
+	bool isContainerVisible(std::string containerName);
 	std::string getClickAction(std::string containerName, sf::Vector2i mouseClickPosition);
 };
 

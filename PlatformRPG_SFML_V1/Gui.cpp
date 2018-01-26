@@ -19,14 +19,14 @@ Gui::Gui()
 	//sf::Color bodyCol, sf::Color borderCol, sf::Color textCol,
 		//sf::Color bodyHighlightCol, sf::Color borderHighlightCol, sf::Color textHighlightCol)
 
-	guiSystem.emplace("rightClickMenu", GuiContainer(sf::Vector2f(196, 16), 2, true, buttonStyle,
+	guiSystem.emplace("rightClickMenu", GuiContainer(sf::Vector2f(128, 16), 2, false, buttonStyle,
 		{
-			std::make_pair("Flatten",         "grass"),
-			std::make_pair("Forest",        "forest"),
-			std::make_pair("Residential Zone",   "residential"),
-			std::make_pair("Commercial Zone",    "commercial"),
-			std::make_pair("Industrial Zone",    "industrial"),
-			std::make_pair("Road",          "road")
+			std::make_pair("Right Click 1",         "grass"),
+			std::make_pair("Right Click 2",        "forest"),
+			std::make_pair("Right Click 3",   "residential"),
+			std::make_pair("Right Click 4",    "commercial"),
+			std::make_pair("Right Click 5",    "industrial"),
+			std::make_pair("Right Click 6",          "road")
 		})
 	);
 	guiSystem.emplace("mainMenu", GuiContainer(sf::Vector2f(384, 48), 8, false, buttonStyle,
@@ -162,6 +162,16 @@ bool Gui::isMouseOver(std::string containerName, sf::Vector2i mousePosition)
 		{
 			return true;
 		}
+	}
+	return false;
+}
+
+bool Gui::isContainerVisible(std::string containerName)
+{
+	//sanity check
+	if (guiSystem.find(containerName) != guiSystem.end())
+	{
+		return guiSystem.at(containerName).isVisible();
 	}
 	return false;
 }
