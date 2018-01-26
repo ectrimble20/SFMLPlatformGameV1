@@ -38,9 +38,6 @@ Gui::Gui()
 			std::make_pair("Exit Game", "exit")
 		}));
 	guiSystem.at("mainMenu").show();
-	guiSystem.at("mainMenu").centerEntityText();
-	//guiSystem.at("rightClickMenu").show();//I might just be retarded, yep, I'm retarded
-
 }
 
 

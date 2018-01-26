@@ -13,12 +13,12 @@ GameStateMainMenu::GameStateMainMenu(Game * game)
 	m_menu_background.setPosition(0.0f, 0.0f);
 
 	m_menu_text.setFont(ResourceHolder::getFont("lucon"));
-	m_menu_text.setCharacterSize(24);
+	m_menu_text.setCharacterSize(12);
 	m_menu_text.setFillColor(sf::Color(255, 255, 255));
 	m_menu_text.setOutlineColor(sf::Color::Black);
 	m_menu_text.setOutlineThickness(2.0f);
-	m_menu_text.setString("Main Menu:  Hit Space To Continue");
-	m_menu_text.setPosition(200.0f, 100.0f);
+	m_menu_text.setString("Play Menu:\nSpace - Centers Menu, Return\nMove menu to upper left corner\nC - Center Menu Text\nL - Left Align Menu Text\nR - Right align menu text\nQ - Exit");
+	m_menu_text.setPosition(5.0f, 15.0f);
 
 	//why u no work >:(
 	sf::Vector2f menuPosition(200.0f, 100.0f);
